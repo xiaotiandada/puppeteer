@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="container">
+  </div>
+
+  <script>
+
+function renderPosts(posts, container) {
+  // const html = posts.reduce((html, post) => {
+  //   return `${html}
+  //     <li class="post">
+  //       <h2>${post.title}</h2>
+  //       <div class="summary">${post.summary}</div>
+  //       <p>${post.content}</p>
+  //     </li>`;
+  // }, '');
+
+  const html =  `
+      <li class="post">
+        <h2>${posts.title}</h2>
+        <div class="summary">${posts.summary}</div>
+        <p>${posts.content}</p>
+      </li>`;
+
+  // CAREFUL: assumes html is sanitized.
+  container.innerHTML = `<ul id="posts">${html}</ul>`;
+}
+
+  (async ()=> {
+    const container = document.querySelector('#container');
+    // const posts = await fetch('/posts').then(resp => resp.json());
+    renderPosts({
+      title: 'Title',
+      summary: 'summary',
+      content: 'content'
+    }, container);
+  })()
+  </script>
+</body>
+</html>
